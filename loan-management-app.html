@@ -1,0 +1,58 @@
+<head>
+    <title>Loan Management App</title>
+  </head>
+  
+  <body>
+    {{> registrationForm}}
+    {{> borrowerDashboard}}
+    {{> lenderDashboard}}
+    {{> adminDashboard}}
+  </body>
+  
+  <template name="registrationForm">
+    <h2>User Registration</h2>
+    <label for="email">Email:</label>
+    <input type="email" id="email">
+    <label for="role">Role:</label>
+    <select id="role">
+      <option value="borrower">Borrower</option>
+      <option value="lender">Lender</option>
+      <option value="admin">Admin</option>
+    </select>
+    <button onclick="registerUser()">Register</button>
+  </template>
+  
+  <template name="borrowerDashboard">
+    <h2>Borrower Dashboard</h2>
+    <button onclick="requestLoan()">Request Loan</button>
+    <h3>Past Loans</h3>
+    <ul>
+      {{#each borrowerLoans}}
+        <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </template>
+  
+  <template name="lenderDashboard">
+    <h2>Lender Dashboard</h2>
+    <button onclick="confirmPayment()">Confirm Payment</button>
+    <h3>Past Payments</h3>
+    <ul>
+      {{#each lenderPayments}}
+        <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </template>
+  
+  <template name="adminDashboard">
+    <h2>Admin Dashboard</h2>
+    <h3>Complete Transactions</h3>
+    <ul>
+      {{#each adminTransactions}}
+        <li>{{this}}</li>
+      {{/each}}
+    </ul>
+  </template>
+  
+
+  
